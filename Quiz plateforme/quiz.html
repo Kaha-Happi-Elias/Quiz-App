@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizApp</title>
+    <link rel="stylesheet" href="css/quiz.css"> <!-- this is the external css of my calculator -->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- this is the bootstrap css of my calculator -->
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/sweetalert.min.js"></script> <!-- alert link -->
+</head>
+<body>
+    <div class="container bg-white main-box">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">Quiz App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="navbar-nav w-100 justify-content-end">
+                        <!--<a href="#" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Portfolio</a>
+                        <a href="#" class="nav-link">About Us</a>
+                        <a href="#" class="nav-link">Contact Us</a>-->
+                        <a href="#" class="nav-link login-btn btn bg-info d-none">Login</a>
+                        <a href="#" class="nav-link signup-btn btn bg-info">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login-box active">
+                    <h1 class="mb-3">Login Form</h1>
+                    <form action="#" class="login-form">
+                        <label for="brand-code1">Brand Code</label>
+                        <input type="text" id="s-brand-code" name="" class="form-control mb-3" required>
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="" class="form-control mb-3" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="" class="form-control mb-3" required>
+                        <div align="end">
+                            <a id="student-form" href="#">Student Login Form</a>
+                        </div>
+                        <button class="btn btn-danger login-btn1 mt-3 mb-3 w-100">Login</button>
+                    </form>
+                </div>
+                <div class="signup-box">
+                    <h1 class="mb-3">Sign In Form</h1>
+                    <form action="#" class="signup-form">
+                        <label for="brand-code">Brand Code</label>
+                        <input type="text" id="brand-code" name="" class="form-control mb-3" required>
+                        <label for="brand-name">Brand Name</label>
+                        <input type="text" id="brand-name" name="" class="form-control mb-3" required>
+                        <label for="s-username">Username</label>
+                        <input type="text" id="s-username" name="" class="form-control mb-3" required>
+                        <label for="s-password">Password</label>
+                        <input type="password" name="" id="s-password" class="form-control mb-3" required>
+                        <div align="end">
+                            <a href="#">Student Login Form</a>
+                        </div>
+                        <button class="btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="images/accounts___man_workspace_desk_laptop_login_user-256.webp" alt="error" class="login-image" alt="">
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/bootstrap.bundle.min.js"></script> <!-- this is the bootstrap JS of my calculator -->
+    <script src="js/quiz.js"></script> <!-- this is the external js of my calculator -->
+</body>
+</html>

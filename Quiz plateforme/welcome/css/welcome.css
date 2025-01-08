@@ -1,0 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: aqua !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.guideline-box h2{
+    font-size: 25px;
+    font-weight: bold;
+}
+.btn{
+    box-shadow: none !important;
+}
+
