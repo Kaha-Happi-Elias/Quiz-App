@@ -80,5 +80,5 @@ loginBtn1.onclick = function(event){
 
 var studentForm = document.getElementById("student-form");
 studentForm.onclick = function(){
-    window.location = "../homepage/homepage.html";
+    window.location = "homepage/homepage.html";
 }
