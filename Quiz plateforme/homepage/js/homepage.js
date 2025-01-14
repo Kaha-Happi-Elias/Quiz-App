@@ -4,7 +4,7 @@ var i;
 var allBranKey = [];
 for(i=0;i<localStorage.length;i++){
     var allkeys = localStorage.key(i);
-    if(allkeys === "0701" || allkeys === "0501"){
+    if(allkeys === "1234" || allkeys === "2345"){
         allBranKey.push(allkeys);
     }
 }
