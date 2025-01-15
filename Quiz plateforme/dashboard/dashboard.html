@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css"> <!-- this is the external css of my QuizApp -->
+
+    <link rel="stylesheet" href="css/all.min.css"> <!-- thess are the fontawesome links of my QuizApp -->
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- this is the bootstrap css of my QuizApp -->
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/sweetalert.min.js"></script> <!-- alert link -->
+</head>
+<body>
+    <div class="toggler-box">
+        <i class="fa-solid fa-bars toggler-icon"></i>
+        <i class="fa-solid fa-xmark d-none toggler-icon"></i>
+    </div>
+    <div class="side-nav">
+        <div class="profil-pic"></div>
+        <!--<ul class="list-group">
+            <li class="list-group-item"><i class="fa fa-home"></i>Home</li>
+            <li class="list-group-item"><i class="fa fa-home"></i>Home</li>
+            <li class="list-group-item"><i class="fa fa-home"></i>Home</li>
+            <li class="list-group-item"><i class="fa fa-home"></i>Home</li>
+            <li class="list-group-item"><i class="fa fa-home"></i>Home</li>
+        </ul>-->
+        <button class="btn btn-success" id="logout-btn">Log out</button>
+    </div>
+    <div class="container-fluid overflow-hidden main-box">
+        <div class="row">
+            <div class="col-md-0 col-lg-2 p-0"></div>
+            <div class="col-md-12 col-lg-10 mt-1" style="padding: 0px 2px 0px 15px;">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h1 id="brand-name">Welcome : Elias</h1>
+                    </li>
+                </ul>
+                <div class="row mt-3">
+                    <div class="col-md-4 teacher-box text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h4>Teachers</h4>
+                            </li>
+                        </ul>
+                        <div class="content-box">
+                            <div class="number-box">
+                                <h5>20</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 teacher-box text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h4>Users</h4>
+                            </li>
+                        </ul>
+                        <div class="content-box">
+                            <div class="number-box">
+                                <h5>144</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 teacher-box text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h4>Subjects</h4>
+                            </li>
+                        </ul>
+                        <div class="content-box">
+                            <div class="number-box">
+                                <h5 id="subject-number"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center">
+                                <h3>Create Subject</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#create-subject">Create Subject</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="create-subject">
+                                    <div class="accordion-body">
+                                        <form action="">
+                                            <input type="text" name="" id="" class="form-control subject-code mb-3" placeholder="Enter the subject code"required> 
+                                            <input type="text" name="" id="" class="form-control subject mb-3" placeholder="Enter the subject name"> 
+                                            <div align="end">
+                                                <button class="btn text-white bg-info subject-btn">Add subject</button>
+                                            </div>  
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group">
+                            <li class="list-group-items text-center">
+                                <h3>Create subject related Questions</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#create-question">Create Question</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="create-question">
+                                    <div class="accordion-body">
+                                        <form action="" class="question-form">
+                                            <select name="" id="choose-subject" class="form-select mb-3">
+                                                <option value="choose subject">Choose Subject</option>
+                                            </select>
+                                            <label for="question">1. Enter your question here</label>
+                                            <input type="text" name="" class="form-control question mb-3" id="question" required>
+                                            <label for="option-one">Option-1</label>
+                                            <input type="text" name="" class="form-control question mb-3" id="option-one" required>
+                                            <label for="option-two">option-2</label>
+                                            <input type="text" name="" class="form-control question mb-3" id="option-two" required>
+                                            <label for="option-three">option-3</label>
+                                            <input type="text" name="" class="form-control question mb-3" id="option-three" required>
+                                            <label for="option-four">option-4</label>
+                                            <input type="text" name="" class="form-control question mb-3" id="option-four" required>
+                                            <select name="" class="form-select question mb-3" id="choose-ans" required>
+                                                <option value="">Choose Correct Option</option>
+                                                <option value="option-1">option-1</option>
+                                                <option value="option-2">option-2</option>
+                                                <option value="option-3">option-3</option>
+                                                <option value="option-4">option-4</option>
+                                            </select>
+                                            <div align="end">
+                                                <button class="btn text-white bg-info">Add question</button>
+                                            </div>  
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center">
+                                <h3>Show Subject</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#show-subject">All Subject</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="show-subject">
+                                    <div class="accordion-body">
+                                       <div class="visible-subject">
+                                        
+                                       </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group">
+                            <li class="list-group-items text-center">
+                                <h3>Update and Delete subject Questions</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#show-question">Update and Delete Question</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="show-question">
+                                    <div class="accordion-body">
+                                        <select name="" id="select-subject" class="form-select mb-3">
+                                            <option value="choose subject">Choose Subject</option>
+                                        </select>
+                                        <div class="visible-question">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-items text-center">
+                                <h3>Users and Teachers Registration Form</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#registration-form">Registration form</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="registration-form">
+                                    <div class="accordion-body">
+                                        <form action="" class="registration-form d-flex">
+                                            <div class="col-md-6 p-2">
+                                                <label for="name">Name</label>
+                                                <input type="text" required id="name" class="form-control mb-3">
+                                                <select name="" id="choose-type" class="form-control mb-3">
+                                                    <option value="choose type">Choose Type</option>
+                                                    <option value="Teacher">Teacher</option>
+                                                    <option value="User">User</option>
+                                                </select>
+                                                <div align="end">
+                                                    <button class="btn btn-info text-white">Register</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 p-2">
+                                                <label for="password">Password</label>
+                                                <input type="password" required id="password" class="form-control mb-3">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-items text-center">
+                                <h3>Users and Teachers information</h3>
+                            </li>
+                        </ul>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#registration-data">Informations</button>
+                                </h2>
+                                <div class="accordion-collapse collapse show" id="registration-data">
+                                    <div class="accordion-body" style="overflow-x: scroll;">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>N°</th>
+                                                    <th>Name</th>
+                                                    <th>Password</th>
+                                                    <th>User Type</th>
+                                                    <th colspan="2">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="registration-data">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--start modal coding-->
+    <div class="modal user-profile-box animate__animated animate__fadeInDown" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>My Profile</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="#" class="modal-form">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Name</span>
+                                    <input type="text" class="form-control mx-3" id="">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Password</span>
+                                    <input type="text" class="form-control mx-3" id="">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">User Type</span>
+                                    <input type="text" class="form-control mx-3" id="">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success modal-edit">Edit</button>
+                    <button class="btn btn-primary modal-upload d-none">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal coding-->
+    <script src="js/bootstrap.bundle.min.js"></script> <!-- this is the bootstrap JS of my quizApp -->
+    <script src="js/dashboard.js"></script> <!-- this is the external js of my quizApp -->
+</body>
+</html>

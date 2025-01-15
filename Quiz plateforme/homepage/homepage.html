@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css">
+
+    <link rel="stylesheet" href="../dashboard/css/all.min.css"> <!-- thess are the fontawesome links of my QuizApp -->
+    <link rel="stylesheet" href="../dashboard/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="../dashboard/css/bootstrap.min.css"> <!-- this is the bootstrap css of my QuizApp -->
+    <link rel="stylesheet" href="../dashboard/css/animate.min.css">
+
+    <script src="../dashboard/js/jquery-3.7.1.js"></script>
+    <script src="../dashboard/js/sweetalert.min.js"></script> <!-- alert link -->
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-3 text-white fw-bold">Welcome to online quiz examination</h1>
+        <div class="row bg-white shadow-lg">
+            <div class="col-md-6">
+                <img src="../images/education___graduation_graduate_certificate_accomplishment_achievement_diploma-256.webp" class="w-100" alt="" style="height: 80%;">
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-danger text-center mt-3 mb-3">Student's & Teacher's Login Form</h1>
+                <form class="login-form">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Choose Space Code</span>
+                        <select name="" class="form-select" id="brand-code-el">
+                            <option value="choose space code">Choose Space Code</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Name</span>
+                        <input type="text" class="form-control name1" autocomplete="username" required>
+                    </div>
+                    <!--<div class="input-group mb-3">
+                        <span class="input-group-text">Password</span>
+                        <input type="password" disabled class="form-control" autocomplete="current-password">
+                    </div>-->
+                    <button class="btn w-100 mb-3">Login</button>
+                    <!--<a href="../quiz.html" class="btn mb-3 w-100">Create your personnall space</a>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/homepage.js"></script>
+</body>
+</html>
+
+<!--
+/*/start return subject in question form
+var chooseSubject = document.querySelector("#choose-subject");
+var questionForm = document.querySelector(".question-form");
+var allQuestionInput = questionForm.querySelectorAll("INPUT");
+var selectSubject = document.querySelector("#select-subject");
+var chooseAns = document.querySelector("#choose-ans");
+var subject;
+var code;
+var allQuestions = [];
+
+const storedCodes = localStorage.getItem(brandCode+"_allCode");
+const allCodes = JSON.parse(storedCodes);
+for (const subjectName in allCodes) {
+    if (allCodes.hasOwnProperty(subjectName)) {
+        const subjectCode = allCodes[subjectName];
+        var subj = `${subjectName}`;
+        //var cod = `${subjectCode}`;
+        if(chooseSubject.value == subj){
+            const cod = `${subjectCode}`;
+        }
+        //console.log(subj,cod);
+        //console.log(`Subject: ${subjectName}, Code: ${subjectCode}`);
+   }
+}
+
+questionForm.onsubmit = (event) => {
+    event.preventDefault();
+    insertQuestionFunc();
+}
+
+const chooseSubjectFunc = () =>{
+    allSubject.forEach((subject, index) => {
+        chooseSubject.innerHTML += ` 
+        <option value='${subject.subjectName}'>${subject.subjectName}</option>`;
+        selectSubject.innerHTML += `<option value='${subject.subjectName}'>${subject.subjectName}</option>`;
+    });
+}
+
+chooseSubjectFunc();
+chooseSubject.addEventListener('change', () =>{
+    checkSubject();
+    checkSubjectKey();
+});
+
+var firstOption = chooseSubject.querySelectorAll("OPTION")[1];
+function checkSubject(){
+    if (chooseSubject.value == "choose subject"){
+        subject = firstOption.value;
+        const storedCodes = localStorage.getItem(brandCode+"_allCode");
+        const allCodes = JSON.parse(storedCodes);
+        for (const subjectName in allCodes) {
+            if (allCodes.hasOwnProperty(subjectName)) {
+                code = allCodes[subject];
+                console.log(code);
+           }
+        }
+    } else {
+        subject = chooseSubject.value;
+        const storedCodes = localStorage.getItem(brandCode+"_allCode");
+        const allCodes = JSON.parse(storedCodes);
+        for (const subjectName in allCodes) {
+            if (allCodes.hasOwnProperty(subjectName)) {
+                code = allCodes[subject];
+                console.log(code);
+           }
+        }
+    }
+}
+checkSubject();
+
+function checkSubjectKey() {
+    const key = brandCode + "_" + code + "_question";
+    try {
+      const data = localStorage.getItem(key);
+      console.log("checkSubjectKey: Retrieved data for key '" + key + "':", data); //Log the retrieved data
+      if (data != null) {
+        allQuestions = JSON.parse(data);
+        console.log("checkSubjectKey: Successfully parsed data:", allQuestions);
+      } else {
+        allQuestions = [];
+        console.log("checkSubjectKey: No data found for key '" + key + "'");
+      }
+    } catch (error) {
+      console.error("checkSubjectKey: Error parsing JSON:", error, "Key:", key, "Data:", localStorage.getItem(key));
+      //Consider adding fallback logic here (e.g., clear localStorage or display error to user)
+      allQuestions = []; //Reset to avoid further issues.
+    }
+} 
+checkSubjectKey();
+
+function insertQuestionFunc(sub, id, question, opOne, opTwo, opThree, opFour, corAns){
+    if(sub != undefined && id != undefined){
+        allQuestions[id] = {
+            question : question,
+            optionOne : opOne,
+            optionTwo : opTwo,
+            optionThree : opThree,
+            optionFour : opFour,
+            correctAnswer : corAns
+        }
+        localStorage.setItem(brandCode+"_"+sub+"_question", JSON.stringify(allQuestions));
+        swal("Success!", "Data updated successfully!", "success");
+    } else {
+        if(chooseSubject.value != "choose subject"){
+            const selectedOption = chooseAns.options[chooseAns.selectedIndex];
+            const correctAnswerText = selectedOption.value;
+            allQuestions.push({
+                question : allQuestionInput[0].value,
+                optionOne : allQuestionInput[1].value,
+                optionTwo : allQuestionInput[2].value,
+                optionThree : allQuestionInput[3].value,
+                optionFour : allQuestionInput[4].value,
+                correctAnswer : correctAnswerText
+            });
+
+            localStorage.setItem(brandCode+"_"+chooseSubject.value+"_question", JSON.stringify(allQuestions));
+            swal("Success!", "Data inserted successfully!", "success");
+            questionForm.reset('');
+        } else {
+            swal("Choose Subject!", "Please select a subject!", "warning");
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (chooseAns) {
+        chooseAns.options[0].disabled = true;
+    }
+});*/
+-->
