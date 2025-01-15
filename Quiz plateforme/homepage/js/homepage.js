@@ -1,11 +1,4 @@
 //start get brand code from localstorage
-
-/*for(i=0;i<localStorage.length;i++){
-    var allkeys = localStorage.key(i);
-    if(allkeys === "0701" || allkeys === "0501"){
-        allBranKey.push(allkeys);
-    }
-}*/
 var allAdminCodeString = sessionStorage.getItem("allAdminCode");
 let allAdminCode = [];
 if (allAdminCodeString) {

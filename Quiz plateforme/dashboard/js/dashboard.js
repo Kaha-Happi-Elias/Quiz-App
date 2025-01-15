@@ -584,5 +584,3 @@ togglersBtn[1].onclick = function(){
     this.classList.add("d-none");
     togglersBtn[0].classList.remove("d-none");
 }
-
-//[{"question":"What is Computer?","optionOne":"l;fd","optionTwo":"11","optionThree":",msd","optionFour":"It is the studying of Information and communication Technology","correctAnswer":"option-4"},{"question":",mxcm","optionOne":"l;fd","optionTwo":"A subject","optionThree":"2","optionFour":"All of the above","correctAnswer":"option-2"}]
